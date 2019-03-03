@@ -1,0 +1,49 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" FlowDirection="RightToLeft"
+             x:Class="DoseCare.View.AddDose">
+    <Grid>
+        <ScrollView>
+            <Grid>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="*"/>
+                    <RowDefinition Height="4*"/>
+                </Grid.RowDefinitions>
+                <Image x:Name="image" Grid.Row="0" Aspect="AspectFit" Source="DoseLogo.png" HorizontalOptions="Center" VerticalOptions="Center"/>
+                <StackLayout Padding="10,0,10,0" Grid.Row="1" VerticalOptions="Start">
+                    <StackLayout>
+                        <StackLayout>
+                            <Label Text="أسم الدواء" TextColor="MediumSeaGreen" FontSize="Large"/>
+                            <Entry x:Name="EntryDosName" TextColor="MediumSeaGreen" FontSize="Large"/>
+                        </StackLayout>
+                        <Grid>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="*"/>
+                                <ColumnDefinition Width="*"/>
+                            </Grid.ColumnDefinitions>
+                            <Label Grid.Column="0" Text="موعد بدأ أول جرعة" TextColor="MediumSeaGreen" FontSize="Medium" HorizontalOptions="Center" VerticalOptions="Center"/>
+                            <TimePicker Grid.Column="1" x:Name="EntryStartTime" TextColor="MediumSeaGreen" FontSize="Large" HorizontalOptions="Center" VerticalOptions="Center"/>
+                        </Grid>
+                        <Grid>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="*"/>
+                                <ColumnDefinition Width="*"/>
+                            </Grid.ColumnDefinitions>
+                            <Label Grid.Column="0" Text="عدد المرات يومياً" TextColor="MediumSeaGreen" FontSize="Medium" VerticalOptions="Center"/>
+                            <StackLayout Grid.Column="1">
+                                <Stepper x:Name="stepper" Minimum="1" Maximum="10" Increment="1"/>
+                                <Label HorizontalOptions="Center" FontSize="Large" TextColor="Green" Text="{Binding Source={x:Reference stepper},Path=Value}"/> 
+                            </StackLayout>
+                        </Grid>
+                        <StackLayout>
+                            <Label Text="الرسالة" TextColor="MediumSeaGreen" FontSize="Medium"/>
+                            <Editor x:Name="EntryMessage" TextColor="MediumSeaGreen" FontSize="Large"/>
+                        </StackLayout>
+                    </StackLayout>
+                    <Button Text="حفظ" x:Name="regbtn" FontSize="Large" FontAttributes="Bold" BackgroundColor="MediumSeaGreen" Padding="7" Margin="10" TextColor="White" BorderRadius="10" HeightRequest="60" WidthRequest="110" Clicked="Regbtn_Clicked"/>
+                </StackLayout>
+            </Grid>
+        </ScrollView>
+        <ActivityIndicator HorizontalOptions="Center" VerticalOptions="Center" x:Name="Activ" Color="OrangeRed"/>
+    </Grid>
+</ContentPage>
